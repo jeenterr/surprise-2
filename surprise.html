@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise Page</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f9f3e3;
+            font-family: Arial, sans-serif;
+        }
+        .envelope {
+            width: 150px;
+            height: 100px;
+            background: #e5c1c5;
+            position: relative;
+            border-radius: 5px;
+            cursor: pointer;
+            animation: pulse 2s infinite;
+        }
+        .envelope:before, .envelope:after {
+            content: "";
+            position: absolute;
+            width: 150px;
+            height: 50px;
+            background: #f3d8db;
+            top: 0;
+            left: 0;
+            clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+        }
+        .envelope:after {
+            top: auto;
+            bottom: 0;
+            transform: rotate(180deg);
+        }
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+        .flower {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+            animation: float 1.5s infinite ease-in-out;
+        }
+        @keyframes float {
+            0%, 100% {
+                transform: translate(-50%, -20px);
+            }
+            50% {
+                transform: translate(-50%, 10px);
+            }
+        }
+        .message {
+            display: none;
+            margin-top: 20px;
+            font-size: 20px;
+            color: #6c4a4b;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="envelope" onclick="showSurprise()"></div>
+    <div class="flower">🌸</div>
+    <div class="message">ฉันรักคุณ</div>
+
+    <script>
+        function showSurprise() {
+            const flower = document.querySelector('.flower');
+            const message = document.querySelector('.message');
+            flower.style.display = 'block';
+            setTimeout(() => {
+                flower.style.display = 'none';
+                message.style.display = 'block';
+            }, 2000); // ดอกไม้แสดง 2 วินาที ก่อนโชว์ข้อความ
+        }
+    </script>
+</body>
+</html>
